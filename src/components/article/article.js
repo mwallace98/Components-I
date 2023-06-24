@@ -117,25 +117,58 @@ const data = [
 */
 
 
-function articleMaker({articleOBJ}){
+function articleMaker({title,date,firstParagraph,secondParagraph,thirdParagraph}){
 const headDiv = document.createElement("div");
 const header2 = document.createElement("h2");
-const paraDate = document.createElement("p");
-const span = document.createElement("span")
+const para1 = document.createElement("p");
+const para2 = document.createElement("p");
+const para3 = document.createElement("p");
+const para4 = document.createElement("p");
+const span = document.createElement("span");
 
-paraDate.textContent = articleOBJ;
+let articles = document.querySelector(".articles");
+console.log(articles)
 
+articles.append(headDiv);
+articles.append(header2);
+articles.append(para1);
+articles.append(para2);
+articles.append(para3);
+articles.append(para4);
+articles.append(span);
 
-headDiv.appendChild(header2);
-headDiv.appendChild(paraDate);
-headDiv.appendChild(span);
-
+headDiv.classList.add("article-open");
+para1.classList.add("date");
 span.classList.add("expandButton");
-headDiv.classList.add("article");
-paraDate.classList.add("date");
 
-console.log(headDiv);
+header2.textContent = title;
+para1.textContent = date;
+para2.textContent = firstParagraph;
+para3.textContent = secondParagraph;
+para4.textContent = thirdParagraph;
+
+headDiv.addEventListener("click", () => {
+headDiv.classList.toggle("article-open");
+
+})
+
+
+return articles;
+
 
 }
 
-articleMaker("test");
+const articleData = data.map(articleOBJ => {
+  return articleMaker(articleOBJ)
+})
+
+// const testArticle = articleMaker({
+// title:"title",
+// date: "date", 
+// firstParagraph:"firstParagraph",
+// secondParagraph:"secondParagraph",
+// thirdParagraph:"thirdParagraph"
+// });
+// console.log(testArticle,"test article")
+
+
