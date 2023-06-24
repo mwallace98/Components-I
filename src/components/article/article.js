@@ -130,14 +130,14 @@ let articles = document.querySelector(".articles");
 console.log(articles)
 
 articles.append(headDiv);
-articles.append(header2);
-articles.append(para1);
-articles.append(para2);
-articles.append(para3);
-articles.append(para4);
-articles.append(span);
+headDiv.appendChild(header2);
+headDiv.append(para1);
+headDiv.append(para2);
+headDiv.append(para3);
+headDiv.append(para4);
+headDiv.appendChild(span);
 
-headDiv.classList.add("article-open");
+headDiv.classList.add("article");
 para1.classList.add("date");
 span.classList.add("expandButton");
 
@@ -148,7 +148,7 @@ para3.textContent = secondParagraph;
 para4.textContent = thirdParagraph;
 
 headDiv.addEventListener("click", () => {
-headDiv.classList.toggle("article-open");
+headDiv.classList.toggle("article");
 
 })
 
